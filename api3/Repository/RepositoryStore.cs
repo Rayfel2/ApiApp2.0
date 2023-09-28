@@ -1,83 +1,87 @@
 ﻿using api3.Interface;
 using api3.Models;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace api3.Repository
 {
     public class RepositoryStore : InterfaceStore
     {
         private readonly PgAdminContext _context;
+
         public RepositoryStore(PgAdminContext context)
         {
             _context = context;
         }
-        public bool CreateStore(Store Store)
+
+        public async Task<bool> CreateStoreAsync(Store Store)
         {
             _context.Add(Store);
-            return save();
+            return await SaveAsync();
         }
 
-        public ICollection<Store> GetStore()
+        public async Task<ICollection<Store>> GetStoreAsync()
         {
-            return _context.Stores.OrderBy(H => H.IdStore).ToList();
-
+            return await _context.Stores.OrderBy(H => H.IdStore).ToListAsync();
         }
 
-        public bool save()
+        public async Task<int> GetStoreIdByNameAsync(string storeName)
         {
-            var saved = _context.SaveChanges();
-            return saved > 0 ? true : false;
+            var store = await _context.Stores.FirstOrDefaultAsync(s => s.Name == storeName);
 
-        }
-        public int GetStoreIdByName(string storeName)
-        {
-            var store = _context.Stores.FirstOrDefault(s => s.Name == storeName);
             if (store != null)
             {
                 return store.IdStore;
             }
-            // Si no se encuentra la tienda, puedes manejarlo de la manera que desees, por ejemplo, devolver -1.
+
             return -1;
         }
 
-        public bool StoreExist(int IdStore)
+        public async Task<bool> StoreExistAsync(int IdStore)
         {
-            return _context.Stores.Any(p => p.IdStore == IdStore);
-
+            return await _context.Stores.AnyAsync(p => p.IdStore == IdStore);
         }
 
-        public bool UpdateStore(int StoreID, Store Store)
+        public async Task<bool> UpdateStoreAsync(int StoreID, Store Store)
         {
             _context.Update(Store);
-            return save();
-
+            return await SaveAsync();
         }
-        public bool DeleteStore(Store Store)
+
+        public async Task<bool> DeleteStoreAsync(Store Store)
         {
             _context.Remove(Store);
-            return save();
+            return await SaveAsync();
         }
 
-        public Store GetStore(int id)
+        public async Task<Store> GetStoreAsync(int id)
         {
-            return _context.Stores.Where(e => e.IdStore == id).FirstOrDefault();
+            return await _context.Stores.FirstOrDefaultAsync(e => e.IdStore == id);
         }
-        public int GetNextStoreId()
+
+        public async Task<int> GetNextStoreIdAsync()
         {
-            var lastStore = _context.Stores
-                .OrderByDescending(e => e.IdStore)
-                .FirstOrDefault();
+            var lastStore = await _context.Stores.OrderByDescending(e => e.IdStore).FirstOrDefaultAsync();
 
             if (lastStore != null)
             {
-                // Se encontró el último registro, devuelve el siguiente ID.
-                int id = Convert.ToInt32(lastStore.IdStore + 1);
-                return id;
+                return Convert.ToInt32(lastStore.IdStore + 1);
             }
             else
             {
-                // No se encontraron registros en la tabla, devuelve 1 como el primer ID.
                 return 1;
             }
         }
+
+        private async Task<bool> SaveAsync()
+        {
+            var saved = await _context.SaveChangesAsync();
+            return saved > 0;
+        }
+
+
     }
 }

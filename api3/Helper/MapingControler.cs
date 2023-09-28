@@ -15,6 +15,7 @@ namespace api3.Helper
 
             // Post (del dto a la tabla)
             CreateMap<EmployeeDto, Employee>();
+            CreateMap<InventoryPostDto, Inventory>();
             CreateMap<InventoryDto, Inventory>();
             CreateMap<StoreDto, Store>();
 

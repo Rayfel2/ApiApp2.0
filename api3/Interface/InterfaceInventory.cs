@@ -4,6 +4,7 @@ namespace api3.Interface
 {
     public interface InterfaceInventory
     {
+        /*
         ICollection<Inventory> GetInventory(); // get
      
         bool UpdateInventory(int InventoryID, Inventory inventory); // put
@@ -15,7 +16,14 @@ namespace api3.Interface
         Inventory GetInventory(int id);
         bool DeleteInventory(Inventory Inventory);
         int GetNextInventoryId();
+        */
+        Task<bool> CreateInventoryAsync(Inventory inventory);
+        Task<List<Inventory>> GetInventoryAsync();
+        Task<bool> InventoryExistAsync(int idInventory);
+        Task<bool> UpdateInventoryAsync(int InventoryID, Inventory inventory);
+        Task<bool> DeleteInventoryAsync(Inventory Inventory);
+        Task<Inventory> GetInventoryAsync(int id);
+        Task<int> GetNextInventoryIdAsync();
 
-        
     }
 }

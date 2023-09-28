@@ -1567,11 +1567,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rayfe\\OneDrive\\Documents\\GitHub\\rom1\\api3\\api3.csproj",
+      "projectUniqueName": "C:\\Users\\rayfe\\OneDrive\\Documents\\GitHub\\ApiApp2.0\\api3\\api3.csproj",
       "projectName": "api3",
-      "projectPath": "C:\\Users\\rayfe\\OneDrive\\Documents\\GitHub\\rom1\\api3\\api3.csproj",
+      "projectPath": "C:\\Users\\rayfe\\OneDrive\\Documents\\GitHub\\ApiApp2.0\\api3\\api3.csproj",
       "packagesPath": "C:\\Users\\rayfe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rayfe\\OneDrive\\Documents\\GitHub\\rom1\\api3\\obj\\",
+      "outputPath": "C:\\Users\\rayfe\\OneDrive\\Documents\\GitHub\\ApiApp2.0\\api3\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

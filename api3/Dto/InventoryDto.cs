@@ -50,3 +50,17 @@ public partial class InventoryUpdateDto
 
 }
 
+public partial class InventoryPostDto
+{
+    public string Store { get; set; }
+
+    public string ListedBy { get; set; }
+
+    public DateTime Date { get; set; }
+
+    public string? Flavor { get; set; }
+
+    public string? IsSeasonFlavor { get; set; }
+
+    public int? Quantity { get; set; }
+}

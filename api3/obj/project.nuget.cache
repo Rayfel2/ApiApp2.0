@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "H6Umpar1NY6hve2sPR/N5r2P3kk9ME/mNzqWlgDh32LSyRMyUmGQ/AZB4LkKhSDn/fp9d3GZb69KGIOclBxSdQ==",
+  "dgSpecHash": "ZsnCqka65g6a49CRL5gYYR7b8tr3u8OhMAl/xujzmKd13JKlmiJMuqmojiRRQAw7IS4/Z/k6QX4gawp9N3CtTg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rayfe\\OneDrive\\Documents\\GitHub\\rom1\\api3\\api3.csproj",
+  "projectFilePath": "C:\\Users\\rayfe\\OneDrive\\Documents\\GitHub\\ApiApp2.0\\api3\\api3.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rayfe\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\rayfe\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

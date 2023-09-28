@@ -1,0 +1,939 @@
+{
+	"info": {
+		"_postman_id": "492a7791-87da-4db9-9116-afcfade46135",
+		"name": "Ice Cream Inventory API 2.0",
+		"description": "API for managing ice cream inventory.  \nModified by group 02",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28262121"
+	},
+	"item": [
+		{
+			"name": "inventory",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "Get details of a specific inventory entry by ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/inventory/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"inventory",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Inventory entry details",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/inventory/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"inventory",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Update an existing inventory entry by ID",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"Quantity\": 80,\n    \"ListedBy\": \"Michael\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/inventory/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"inventory",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Inventory entry updated successfully",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"example\": {\n    \"Quantity\": 80,\n    \"Listed By\": \"Alice\"\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/inventory/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"inventory",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Delete a specific inventory entry by ID",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/inventory/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"inventory",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Inventory entry deleted successfully",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/inventory/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"inventory",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "upload",
+					"item": [
+						{
+							"name": "Upload inventory entries from a CSV file",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "multipart/form-data"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "csvFile",
+											"value": "<string>",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/inventory/upload",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"inventory",
+										"upload"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Inventory entries uploaded successfully",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "multipart/form-data"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "csvFile",
+													"value": "<string>",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}/inventory/upload",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"inventory",
+												"upload"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "All filters",
+					"item": [
+						{
+							"name": "All filter in the same time",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/inventory?page=1&pageSize=10&nameFilter=John&flavorFilter=Chocolate&isSeasonFlavorFilter=false&quantityFilter=>:20&dateFilter=2023-07-17",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"inventory"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "pageSize",
+											"value": "10"
+										},
+										{
+											"key": "nameFilter",
+											"value": "John"
+										},
+										{
+											"key": "flavorFilter",
+											"value": "Chocolate"
+										},
+										{
+											"key": "isSeasonFlavorFilter",
+											"value": "false"
+										},
+										{
+											"key": "quantityFilter",
+											"value": ">:20"
+										},
+										{
+											"key": "dateFilter",
+											"value": "2023-07-17"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "List of inventory entries",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/inventory",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"inventory"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Pagination",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/inventory?page=1&pageSize=10",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"inventory"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "pageSize",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "List of inventory entries",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/inventory",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"inventory"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Name Employee Filter",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/inventory?nameFilter=Michael",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"inventory"
+									],
+									"query": [
+										{
+											"key": "nameFilter",
+											"value": "Michael",
+											"description": "Exacta"
+										},
+										{
+											"key": "nameFilter",
+											"value": "Mi",
+											"description": "No exacta",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "List of inventory entries",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/inventory",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"inventory"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "flavor Filter",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/inventory?flavorFilter=Chocolate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"inventory"
+									],
+									"query": [
+										{
+											"key": "flavorFilter",
+											"value": "Chocolate"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "List of inventory entries",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/inventory",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"inventory"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Is season flavor? Filter",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/inventory?isSeasonFlavorFilter=true",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"inventory"
+									],
+									"query": [
+										{
+											"key": "isSeasonFlavorFilter",
+											"value": "true"
+										},
+										{
+											"key": "isSeasonFlavorFilter",
+											"value": "false",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "List of inventory entries",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/inventory",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"inventory"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "All quantity Filter",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/inventory?quantityFilter==:30",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"inventory"
+									],
+									"query": [
+										{
+											"key": "quantityFilter",
+											"value": "=:30",
+											"description": "Igual que"
+										},
+										{
+											"key": "quantityFilter",
+											"value": ">=:30",
+											"description": "Mayor igual que",
+											"disabled": true
+										},
+										{
+											"key": "quantityFilter",
+											"value": ">:30",
+											"description": "Mayor que",
+											"disabled": true
+										},
+										{
+											"key": "quantityFilter",
+											"value": "<=:30",
+											"description": "Menor igual que",
+											"disabled": true
+										},
+										{
+											"key": "quantityFilter",
+											"value": "<:30",
+											"description": "Menor que",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "List of inventory entries",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/inventory",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"inventory"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "date Filter",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/inventory?dateFilter=2023-07-17",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"inventory"
+									],
+									"query": [
+										{
+											"key": "dateFilter",
+											"value": "2023-07-17",
+											"description": "fecha exacta"
+										},
+										{
+											"key": "dateFilter",
+											"value": "2023-07-17|2023-09-17",
+											"description": "rango",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "List of inventory entries",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/inventory",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"inventory"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Get a list of all inventory entries",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/inventory",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"inventory"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List of inventory entries",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/inventory",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"inventory"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Create a new inventory entry",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"store\": \"Store C\",\n  \"listedBy\": \"Michael\",\n  \"date\": \"2023-09-28T00:00:00.000Z\",\n  \"flavor\": \"Chocolate\",\n  \"isSeasonFlavor\": \"true\",\n  \"quantity\": 20\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/inventory",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"inventory"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Inventory entry created successfully",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"example\": {\n    \"Store\": \"Store A\",\n    \"Date\": \"2023-09-15\",\n    \"Flavor\": \"Vanilla\",\n    \"Is Season Flavor\": \"No\",\n    \"Quantity\": 70,\n    \"Listed By\": \"Mary\"\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/inventory",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"inventory"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Store",
+			"item": [
+				{
+					"name": "Get a list of all store entries",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/store?page=1&pageSize=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"store"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List of store entries",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/store",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"store"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Employee",
+			"item": [
+				{
+					"name": "Get a list of all employee entries",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/employee?page=1&pageSize=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"employee"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List of employee entries",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/inventory",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"inventory"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": ""
+		}
+	]
+}

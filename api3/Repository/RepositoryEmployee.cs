@@ -1,102 +1,95 @@
 ﻿using api3.Interface;
 using api3.Models;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace api3.Repository
 {
     public class RepositoryEmployee : InterfaceEmployee
     {
         private readonly PgAdminContext _context;
+
         public RepositoryEmployee(PgAdminContext context)
         {
             _context = context;
         }
-        public bool CreateEmployee(Employee Employee)
+
+        public async Task<bool> CreateEmployeeAsync(Employee employee)
         {
-            _context.Add(Employee);
-            return save();
+            _context.Add(employee);
+            return await SaveAsync();
         }
 
-        public ICollection<Employee> GetEmployee()
+        public async Task<List<Employee>> GetEmployeeAsync()
         {
-            return _context.Employees.OrderBy(H => H.IdEmployee).ToList();
-
+            return await _context.Employees.OrderBy(e => e.IdEmployee).ToListAsync();
         }
 
-        public bool save()
+        public async Task<bool> EmployeeExistAsync(int idEmployee)
         {
-            
-            var saved = _context.SaveChanges();
-            return saved > 0 ? true : false;
-
+            return await _context.Employees.AnyAsync(p => p.IdEmployee == idEmployee);
         }
 
-        public bool EmployeeExist(int idEmployee)
-        {
-            return _context.Employees.Any(p => p.IdEmployee == idEmployee);
-
-        }
-
-        public bool UpdateEmployee(int EmployeeID, Employee employee)
+        public async Task<bool> UpdateEmployeeAsync(int employeeID, Employee employee)
         {
             _context.Update(employee);
-            return save();
-
+            return await SaveAsync();
         }
 
-        public bool DeleteEmployee(Employee Employee)
+        public async Task<bool> DeleteEmployeeAsync(Employee employee)
         {
-            _context.Remove(Employee);
-            return save();
+            _context.Remove(employee);
+            return await SaveAsync();
         }
 
-        public Employee GetEmployee(int id)
+        public async Task<Employee> GetEmployeeAsync(int id)
         {
-            return _context.Employees.Where(e => e.IdEmployee == id).FirstOrDefault();
+            return await _context.Employees.Where(e => e.IdEmployee == id).FirstOrDefaultAsync();
         }
 
-        public int GetNextEmployeeId()
+        public async Task<int> GetNextEmployeeIdAsync()
         {
-            var lastEmployee = _context.Employees
-                .OrderByDescending(e => e.IdEmployee)
-                .FirstOrDefault();
+            var lastEmployee = await _context.Employees.OrderByDescending(e => e.IdEmployee).FirstOrDefaultAsync();
 
             if (lastEmployee != null)
             {
-                // Se encontró el último registro, devuelve el siguiente ID.
-                int id = Convert.ToInt32(lastEmployee.IdEmployee + 1);
-                return id;
+                return Convert.ToInt32(lastEmployee.IdEmployee + 1);
             }
             else
             {
-                // No se encontraron registros en la tabla, devuelve 1 como el primer ID.
                 return 1;
             }
         }
-        public int GetEmployeeIdByName(string EmployeeName)
+
+        public async Task<int> GetEmployeeIdByNameAsync(string employeeName)
         {
-            var Employee = _context.Employees.FirstOrDefault(s => s.Name == EmployeeName);
+            var employee = await _context.Employees.FirstOrDefaultAsync(s => s.Name == employeeName);
 
-
-            if (Employee != null)
+            if (employee != null)
             {
-                return Employee.IdEmployee;
+                return employee.IdEmployee;
             }
-            // Si no se encuentra la tienda, puedes manejarlo de la manera que desees, por ejemplo, devolver -1.
+
             return -1;
         }
 
-        // Para que me traiga todos y no solo 1 (no exacta)
-        public List<int> GetEmployeeIdsByPartialNames(List<string> partialNames)
+        public async Task<List<int>> GetEmployeeIdsByPartialNamesAsync(List<string> partialNames)
         {
-            // Utiliza LINQ para buscar los IDs de empleados cuyos nombres contienen alguna cadena parcial
-            var employeeIds = _context.Employees
-                 .AsEnumerable() // Esto carga los datos en memoria (soluciona un error de constains)
+            var employeeIds = await _context.Employees
                 .Where(employee => partialNames.Any(partialName => employee.Name.Contains(partialName)))
                 .Select(employee => employee.IdEmployee)
-                .ToList();
+                .ToListAsync();
 
             return employeeIds;
+        }
 
+        private async Task<bool> SaveAsync()
+        {
+            var saved = await _context.SaveChangesAsync();
+            return saved > 0;
         }
     }
 }

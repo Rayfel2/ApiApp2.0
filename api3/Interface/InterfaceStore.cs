@@ -1,19 +1,20 @@
-﻿using api3.Models; // ES UN USING
+﻿using api3.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
-namespace api3.Interface // nombre de la interfaz
+namespace api3.Interface
 {
-    public interface InterfaceStore // PUPU
+    public interface InterfaceStore
     {
-        ICollection<Store> GetStore(); // get
-        //Facturas GetFacturas(int id);
-        bool UpdateStore(int StoreID, Store Store); // put
-        bool save(); // guardar
-        bool StoreExist(int IdStore ); // put y post
-        bool CreateStore(Store Store); //post
-        Store GetStore(int id);
-        bool DeleteStore(Store Store);
-        int GetNextStoreId();
+        Task<ICollection<Store>> GetStoreAsync(); // GET
+        Task<bool> UpdateStoreAsync(int StoreID, Store Store); // PUT
+       // Task<bool> SaveAsync(); // Guardar
+        Task<bool> StoreExistAsync(int IdStore); // PUT y POST
+        Task<bool> CreateStoreAsync(Store Store); // POST
+        Task<Store> GetStoreAsync(int id);
+        Task<bool> DeleteStoreAsync(Store Store);
+        Task<int> GetNextStoreIdAsync();
 
-        int GetStoreIdByName(string storeName);
+        Task<int> GetStoreIdByNameAsync(string storeName);
     }
 }
